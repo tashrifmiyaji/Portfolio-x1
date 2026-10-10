@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-darkBg: #090d16;
+  --color-darkCard: #111827;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-height: 100vh;
+  background: #090d16;
+  color: #f3f4f6;
+}
+
+.glow-effect:hover {
+  border-color: #10b981;
+  box-shadow: 0 0 20px rgb(16 185 129 / 20%);
+}
