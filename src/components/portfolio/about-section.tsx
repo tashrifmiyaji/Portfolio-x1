@@ -10,11 +10,11 @@ export function AboutSection() {
           </SectionHeading>
         </div>
         <div className="space-y-6 text-base leading-relaxed text-gray-400 sm:text-lg md:col-span-8">
-          <p>
+          <p className="font-extrabold">
             Hello! My programming journey started out of pure curiosity. As a{" "}
-            <span className="font-semibold text-emerald-400">
+            {/* <span className="font-semibold text-emerald-400"> */}
               self-taught full-stack developer
-            </span>
+            {/* </span> */}
             , I spent over 3 dedicated years learning software architecture from
             the ground up, turning errors into milestones.
           </p>
