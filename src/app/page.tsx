@@ -121,11 +121,18 @@ const colorClasses = {
   },
 };
 
-function SectionHeading({ children }: { children: ReactNode }) {
+function SectionHeading({
+  children,
+  label,
+}: {
+  children: ReactNode;
+  label: string;
+}) {
   return (
-    <h2 className="border-l-4 border-emerald-500 pl-4 font-mono text-2xl font-bold tracking-tight text-white">
-      {children}
-    </h2>
+    <div className="section-heading">
+      <span className="section-kicker">{label}</span>
+      <h2>{children}</h2>
+    </div>
   );
 }
 
@@ -152,40 +159,42 @@ export default function Home() {
 
   return (
     <>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 h-[350px] w-full max-w-7xl -translate-x-1/2 bg-gradient-to-b from-emerald-500/10 via-transparent to-transparent blur-3xl"
-      />
+      <div aria-hidden="true" className="ambient ambient-one" />
+      <div aria-hidden="true" className="ambient ambient-two" />
 
-      <header className="sticky top-0 z-40 border-b border-gray-800 bg-darkBg/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <header className="site-header">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <a
             href="#hero"
-            className="font-mono text-xl font-bold tracking-wider text-emerald-400"
+            className="brand-mark"
           >
-            &lt;<span className="text-white">Tashrif</span> /&gt;
+            <span className="brand-icon">&lt;T/&gt;</span>
+            <span className="brand-name">TASHRIF <span>MIYAJI</span></span>
           </a>
           <nav
             aria-label="Main navigation"
-            className="hidden items-center space-x-6 font-mono text-sm md:flex"
+            className="desktop-nav"
           >
             {navigation.map(([label, href]) => (
               <a
                 key={href}
                 href={href}
-                className="text-gray-400 transition-colors hover:text-emerald-400"
+                className="nav-link"
               >
                 {label}
               </a>
             ))}
           </nav>
+          <a className="header-cta" href="#connect">
+            Let&apos;s talk <i className="fa-solid fa-arrow-up-right-from-square" />
+          </a>
           <button
             type="button"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((open) => !open)}
-            className="text-gray-400 hover:text-white focus:outline-none md:hidden"
+            className="menu-toggle"
           >
             <i className={`fa-solid ${menuOpen ? "fa-xmark" : "fa-bars"} text-xl`} />
           </button>
@@ -194,14 +203,14 @@ export default function Home() {
           <nav
             id="mobile-menu"
             aria-label="Mobile navigation"
-            className="space-y-3 border-b border-gray-800 bg-darkCard px-4 py-4 font-mono text-sm md:hidden"
+            className="mobile-nav"
           >
             {navigation.map(([label, href]) => (
               <a
                 key={href}
                 href={href}
                 onClick={() => setMenuOpen(false)}
-                className="block py-1 text-gray-400 hover:text-emerald-400"
+                className="nav-link block py-2"
               >
                 {label}
               </a>
@@ -210,95 +219,97 @@ export default function Home() {
         )}
       </header>
 
-      <main className="mx-auto w-full max-w-6xl space-y-28 px-4 py-12 sm:px-6">
+      <main className="site-main mx-auto w-full max-w-7xl space-y-24 px-5 py-8 sm:px-8 sm:py-12">
         <section
           id="hero"
-          className="grid items-center gap-12 pt-4 md:grid-cols-12 md:pt-12"
+          className="hero-section"
         >
-          <div className="order-2 space-y-6 md:col-span-7 md:order-1">
-            <div className="inline-flex items-center space-x-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-400">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              <span>Open to New Opportunities</span>
+          <div className="hero-copy">
+            <div className="availability">
+              <span className="availability-dot" />
+              Available for select projects <span className="availability-separator">/</span> 2026
             </div>
-
-            <h1 className="text-4xl font-extrabold leading-none tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Hi, I&apos;m{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
-                Tashrif Miyaji
-              </span>
+            <p className="hero-overline"><span>01</span> FULL-STACK DEVELOPER <span className="overline-rule" /></p>
+            <h1 className="hero-title">
+              I build digital
+              <span> things that</span>
+              <span className="hero-title-accent"> make a difference.</span>
             </h1>
-            <h2 className="font-mono text-xl font-medium text-emerald-400 sm:text-2xl">
-              <span aria-hidden="true">🚀 </span>Full Stack Web Developer
-            </h2>
-            <p className="max-w-xl text-base leading-relaxed text-gray-400 sm:text-lg">
+            <p className="hero-description">
+              Hey, I&apos;m <strong>Tashrif Miyaji</strong> — a self-taught
+              developer turning complex ideas into fast, thoughtful, and
+              scalable web experiences.
+            </p>
+            <div className="hero-tags">
+              <span>Next.js</span><span>React</span><span>Node.js</span><span>TypeScript</span>
+            </div>
+            <p className="sr-only">
               I design and deploy robust, high-performance web systems using
               the MERN Stack and Next.js. I specialize in turning complex logic
               into structured, beautiful, and fully scalable user experiences.
             </p>
-            <div className="flex flex-wrap gap-4 pt-4 font-mono text-sm">
+            <div className="hero-actions">
               <a
                 href="/TASRIF_Resume.pdf"
                 download
-                className="inline-flex items-center space-x-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-3 font-bold text-gray-950 shadow-lg shadow-emerald-500/20 transition-all duration-300 hover:from-emerald-600 hover:to-teal-700"
+                className="button-primary"
               >
-                <i className="fa-solid fa-download" aria-hidden="true" />
-                <span>Download Resume</span>
+                <span>Download résumé</span>
+                <i className="fa-solid fa-arrow-down" aria-hidden="true" />
               </a>
               <a
                 href="#projects"
-                className="rounded-lg border border-gray-700 bg-gray-800 px-6 py-3 text-white transition-colors hover:bg-gray-700"
+                className="button-quiet"
               >
-                Browse Work
+                Explore my work <i className="fa-solid fa-arrow-down" aria-hidden="true" />
               </a>
+            </div>
+            <div className="hero-socials">
+              <span>FIND ME ON</span>
+              {[
+                ["GitHub", "fa-github", "https://github.com/tashrifmiyaji"],
+                ["LinkedIn", "fa-linkedin-in", "https://www.linkedin.com/in/tashrifmiyaji"],
+                ["Twitter/X", "fa-twitter", "https://twitter.com/tashrifmiyaji"],
+                ["Facebook", "fa-facebook-f", "https://www.facebook.com/tashrifmiyaji"],
+              ].map(([label, icon, href]) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}>
+                  <i className={`fa-brands ${icon}`} aria-hidden="true" />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="order-1 flex justify-center md:col-span-5 md:order-2">
-            <div className="group relative">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-500 to-blue-500 opacity-20 blur-xl transition-opacity duration-500 group-hover:opacity-40" />
-              <div className="relative flex h-64 w-64 items-center justify-center rounded-3xl border-2 border-gray-800 bg-darkCard p-3 text-center transition-all duration-500 group-hover:border-emerald-500 sm:h-72 sm:w-72">
-                <img
-                  src="https://avatars.githubusercontent.com/tashrifmiyaji"
-                  alt="Tashrif Miyaji"
-                  className="h-full w-full rounded-2xl border border-gray-700 object-cover"
-                />
-              </div>
+          <div className="hero-visual">
+            <div className="hero-orbit orbit-one" />
+            <div className="hero-orbit orbit-two" />
+            <div className="portrait-frame">
+              <span className="portrait-index">TM — 26</span>
+              <img src="https://avatars.githubusercontent.com/tashrifmiyaji" alt="Portrait of Tashrif Miyaji" />
+              <span className="portrait-caption">CREATIVE MIND<br />DEVELOPER BY CRAFT</span>
             </div>
+            <div className="floating-card floating-code">
+              <span className="code-dots"><i /><i /><i /></span>
+              <code><span>const</span> passion = <b>&quot;building&quot;</b>;</code>
+            </div>
+            <div className="floating-card floating-location">
+              <i className="fa-solid fa-location-dot" aria-hidden="true" />
+              <span>Based in <b>Bangladesh</b></span>
+            </div>
+            <span className="visual-cross cross-one">+</span>
+            <span className="visual-cross cross-two">+</span>
           </div>
+          <a className="scroll-cue" href="#about"><span /> SCROLL TO EXPLORE</a>
         </section>
 
-        <section className="space-y-4 rounded-2xl border border-gray-800 bg-darkCard/50 p-6 text-center">
-          <h2 className="font-mono text-sm uppercase tracking-widest text-gray-400">
-            Connect Across Networks
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              ["GitHub", "fa-github", "https://github.com/tashrifmiyaji"],
-              ["LinkedIn", "fa-linkedin-in", "https://www.linkedin.com/in/tashrifmiyaji"],
-              ["Twitter/X", "fa-twitter", "https://twitter.com/tashrifmiyaji"],
-              ["Facebook", "fa-facebook-f", "https://www.facebook.com/tashrifmiyaji"],
-            ].map(([label, icon, href]) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-700 bg-gray-800 text-lg text-white transition-transform hover:-translate-y-1 hover:bg-gray-700"
-              >
-                <i className={`fa-brands ${icon}`} aria-hidden="true" />
-              </a>
-            ))}
-          </div>
+        <section className="social-strip">
+          <span>TRUSTED TO TURN IDEAS INTO INTERFACES</span>
+          <div><b>Frontend</b><i /> <b>Backend</b><i /> <b>Creative Development</b><i /> <b>Problem Solving</b></div>
         </section>
 
         <section id="about" className="border-t border-gray-800/60 pt-16">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-4">
-              <SectionHeading>
+              <SectionHeading label="THE PERSON BEHIND THE PIXELS">
                 <span aria-hidden="true">👨‍💻 </span>About Me
               </SectionHeading>
             </div>
@@ -337,7 +348,7 @@ export default function Home() {
 
         <section id="skills" className="space-y-8 border-t border-gray-800/60 pt-16">
           <div className="space-y-2">
-            <SectionHeading>
+            <SectionHeading label="TOOLS OF THE TRADE">
               <span aria-hidden="true">🧠 </span>Tech Stack &amp; Skills
             </SectionHeading>
             <p className="max-w-xl pl-5 text-gray-400">
@@ -391,7 +402,7 @@ export default function Home() {
         <section id="education" className="border-t border-gray-800/60 pt-16">
           <div className="grid gap-12 md:grid-cols-2">
             <div className="space-y-6">
-              <SectionHeading>
+              <SectionHeading label="MY JOURNEY SO FAR">
                 <span aria-hidden="true">🎓 </span>Educational Background
               </SectionHeading>
               <div className="relative ml-2 space-y-6 border-l border-gray-800 pl-6">
@@ -545,7 +556,7 @@ export default function Home() {
 
       {project && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          className="project-modal-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setActiveProject(null);
           }}
@@ -554,7 +565,7 @@ export default function Home() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-dialog-title"
-            className="relative max-h-[90vh] w-full max-w-2xl space-y-6 overflow-y-auto rounded-2xl border border-gray-800 bg-darkCard p-6 shadow-2xl"
+            className="project-modal relative max-h-[90vh] w-full max-w-2xl space-y-6 overflow-y-auto rounded-2xl border border-gray-800 bg-darkCard p-6 shadow-2xl"
           >
             <button
               type="button"
@@ -611,7 +622,7 @@ export default function Home() {
                 href={project.live}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center space-x-1 rounded bg-emerald-500 px-4 py-2 font-bold text-gray-950 hover:bg-emerald-600"
+                className="modal-link-primary flex items-center space-x-1 rounded bg-emerald-500 px-4 py-2 font-bold text-gray-950 hover:bg-emerald-600"
               >
                 <i
                   className="fa-solid fa-arrow-up-right-from-square"
@@ -623,7 +634,7 @@ export default function Home() {
                 href={project.repository}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center space-x-1 rounded border border-gray-700 bg-gray-800 px-4 py-2 text-white hover:bg-gray-700"
+                className="modal-link-secondary flex items-center space-x-1 rounded border border-gray-700 bg-gray-800 px-4 py-2 text-white hover:bg-gray-700"
               >
                 <i className="fa-brands fa-github" aria-hidden="true" />
                 <span>GitHub Client Repo</span>
