@@ -34,7 +34,7 @@ export function HeroSection() {
           structured, beautiful, and fully scalable user experiences.
         </p>
         <div className="hero-actions">
-          <a href="/TASRIF_Resume.pdf" download className="button-primary">
+          <a href="/TASRIF_Resume_Upwork.pdf" download className="button-primary">
             <span>Download résumé</span>
             <i className="fa-solid fa-arrow-down" aria-hidden="true" />
           </a>
