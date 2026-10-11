@@ -44,7 +44,7 @@ export function HeroSection() {
           </a>
         </div>
         <div className="hero-socials">
-          <span>FIND ME ON</span>
+          <span>GitHub</span>
           {socialLinks.map(([label, icon, href]) => (
             <a
               key={label}

@@ -8,9 +8,9 @@ export const navigation = [
 
 export const socialLinks = [
   ["GitHub", "fa-github", "https://github.com/tashrifmiyaji"],
-  ["LinkedIn", "fa-linkedin-in", "https://www.linkedin.com/in/tashrifmiyaji"],
-  ["Twitter/X", "fa-twitter", "https://twitter.com/tashrifmiyaji"],
-  ["Facebook", "fa-facebook-f", "https://www.facebook.com/tashrifmiyaji"],
+  // ["LinkedIn", "fa-linkedin-in", "https://www.linkedin.com/in/tashrifmiyaji"],
+  // ["Twitter/X", "fa-twitter", "https://twitter.com/tashrifmiyaji"],
+  // ["Facebook", "fa-facebook-f", "https://www.facebook.com/tashrifmiyaji"],
 ] as const;
 
 export const projects = {
