@@ -1,28 +1,33 @@
+"use client";
+
 import { socialLinks } from "@/data/portfolio";
+import { useScrollReveal } from "./use-scroll-reveal";
 
 export function HeroSection() {
+  const sectionRef = useScrollReveal<HTMLElement>(".hero-motion");
+
   return (
-    <section id="hero" className="hero-section">
+    <section id="hero" ref={sectionRef} className="hero-section">
       <div className="hero-copy">
-        <div className="availability">
+        <div className="availability hero-motion">
           <span className="availability-dot" />
           Available for select projects{" "}
           <span className="availability-separator">/</span> 2026
         </div>
-        <p className="hero-overline">
+        <p className="hero-overline hero-motion">
           <span>01</span> FULL-STACK DEVELOPER <span className="overline-rule" />
         </p>
-        <h1 className="hero-title">
+        <h1 className="hero-title hero-motion">
           I build digital
           <span> things that</span>
           <span className="hero-title-accent"> make a difference.</span>
         </h1>
-        <p className="hero-description">
-          Hey, I&apos;m <strong>Tashrif Miyaji</strong> — a self-taught developer
+        <p className="hero-description hero-motion">
+          Hey, I&apos;m <strong>Tashrif Miyaji</strong> — a full-stick developer
           turning complex ideas into fast, thoughtful, and scalable web
           experiences.
         </p>
-        <div className="hero-tags">
+        <div className="hero-tags hero-motion">
           <span>Next.js</span>
           <span>React</span>
           <span>Node.js</span>
@@ -35,7 +40,7 @@ export function HeroSection() {
         </p>
         <div className="hero-actions">
           <a href="/TASRIF_Resume_Upwork.pdf" download className="button-primary">
-            <span>Download résumé</span>
+            <span>Download resume</span>
             <i className="fa-solid fa-arrow-down" aria-hidden="true" />
           </a>
           <a href="#projects" className="button-quiet">
@@ -59,7 +64,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="hero-visual">
+      <div className="hero-visual hero-motion">
         <div className="hero-orbit orbit-one" />
         <div className="hero-orbit orbit-two" />
         <div className="portrait-frame">
@@ -93,7 +98,7 @@ export function HeroSection() {
         <span className="visual-cross cross-one">+</span>
         <span className="visual-cross cross-two">+</span>
       </div>
-      <a className="scroll-cue" href="#about">
+      <a className="scroll-cue hero-motion" href="#about">
         <span /> SCROLL TO EXPLORE
       </a>
     </section>

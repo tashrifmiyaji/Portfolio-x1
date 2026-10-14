@@ -1,0 +1,71 @@
+.ambient-dew {
+  position: fixed;
+  z-index: 0;
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(201 246 111 / 13%), rgb(201 246 111 / 4%) 35%, transparent 72%);
+  filter: blur(28px);
+  opacity: 0;
+  pointer-events: none;
+  animation: dew-flare 26s ease-in-out infinite;
+}
+
+.dew-one {
+  top: 18%;
+  left: 12%;
+  animation-delay: -4s;
+}
+
+.dew-two {
+  top: 48%;
+  right: 8%;
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, rgb(180 160 255 / 12%), rgb(180 160 255 / 3%) 38%, transparent 72%);
+  animation-delay: -14s;
+}
+
+.dew-three {
+  bottom: 8%;
+  left: 42%;
+  width: 16rem;
+  height: 16rem;
+  animation-delay: -21s;
+}
+
+.cursor-glow {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(201 246 111 / 12%) 0,
+    rgb(201 246 111 / 4%) 32%,
+    transparent 68%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-100vw, -100vh, 0);
+  transition: opacity .45s ease;
+  will-change: transform, opacity;
+}
+
+.cursor-glow-visible {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .cursor-glow {
+    display: none;
+  }
+
+  .ambient-dew {
+    width: 13rem;
+    height: 13rem;
+  }
+}
