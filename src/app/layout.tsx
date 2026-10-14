@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./skills.css";
+import "./projects.css";
+import "./cursor-effects.css";
+import "./motion.css";
 
 export const metadata: Metadata = {
   title: "Tashrif Miyaji | Full Stack Developer Portfolio",

@@ -1,0 +1,193 @@
+.reveal-item,
+.hero-motion,
+.skill-heading,
+.project-heading {
+  --reveal-x: 0;
+  --reveal-y: 2rem;
+  transition:
+    opacity .7s ease,
+    transform .8s cubic-bezier(.2, .75, .25, 1);
+}
+
+.reveal-item:not(.is-revealed),
+.hero-motion:not(.is-revealed),
+.skill-heading:not(.is-revealed),
+.project-heading:not(.is-revealed) {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x), var(--reveal-y), 0);
+}
+
+.reveal-item.is-revealed,
+.hero-motion.is-revealed,
+.skill-heading.is-revealed,
+.project-heading.is-revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-item[data-reveal="left"],
+.hero-motion[data-reveal="left"],
+.skill-heading[data-reveal="left"],
+.project-heading[data-reveal="left"] { --reveal-x: -4rem; --reveal-y: 0; }
+.reveal-item[data-reveal="right"],
+.hero-motion[data-reveal="right"],
+.skill-heading[data-reveal="right"],
+.project-heading[data-reveal="right"] { --reveal-x: 4rem; --reveal-y: 0; }
+.reveal-item[data-reveal="top"],
+.hero-motion[data-reveal="top"],
+.skill-heading[data-reveal="top"],
+.project-heading[data-reveal="top"] { --reveal-y: -3rem; }
+.reveal-item[data-reveal="bottom"],
+.hero-motion[data-reveal="bottom"],
+.skill-heading[data-reveal="bottom"],
+.project-heading[data-reveal="bottom"] { --reveal-y: 3rem; }
+.reveal-item[data-reveal="top-left"],
+.hero-motion[data-reveal="top-left"],
+.skill-heading[data-reveal="top-left"],
+.project-heading[data-reveal="top-left"] { --reveal-x: -3rem; --reveal-y: -2rem; }
+.reveal-item[data-reveal="bottom-right"],
+.hero-motion[data-reveal="bottom-right"],
+.skill-heading[data-reveal="bottom-right"],
+.project-heading[data-reveal="bottom-right"] { --reveal-x: 3rem; --reveal-y: 2rem; }
+
+.desktop-nav .nav-link,
+.mobile-nav .nav-link {
+  position: relative;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.desktop-nav .nav-link::after,
+.mobile-nav .nav-link::after {
+  position: absolute;
+  right: 100%;
+  bottom: -.35rem;
+  left: 0;
+  height: 1px;
+  background: var(--lime);
+  content: "";
+  transition: right .25s ease;
+}
+
+.desktop-nav .nav-link:hover,
+.mobile-nav .nav-link:hover {
+  transform: translateY(-2px);
+}
+
+.desktop-nav .nav-link:hover::after,
+.mobile-nav .nav-link:hover::after {
+  right: 0;
+}
+
+.social-strip b {
+  transition: color .2s ease, transform .2s ease;
+}
+
+.social-strip b:hover {
+  transform: translateY(-2px);
+  color: var(--lime);
+}
+
+.site-header {
+  animation: header-arrive .8s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.mobile-nav {
+  transform-origin: top;
+  animation: menu-arrive .35s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.project-modal-backdrop {
+  animation: modal-fade .25s ease both;
+}
+
+.project-modal {
+  animation: modal-arrive .4s cubic-bezier(.2, .75, .25, 1) both;
+}
+
+@media (max-width: 767px) {
+  .hero-motion[data-reveal="left"] { --reveal-x: -2rem; }
+  .hero-motion[data-reveal="right"] { --reveal-x: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item,
+  .hero-motion,
+  .skill-heading,
+  .project-heading {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@keyframes header-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menu-arrive {
+  from {
+    opacity: 0;
+    transform: scaleY(.92) translateY(-.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dew-flare {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(.75);
+  }
+  8% {
+    opacity: .2;
+    transform: scale(1.08);
+  }
+  14% {
+    opacity: .72;
+    transform: scale(1.18);
+  }
+  20% {
+    opacity: .08;
+    transform: scale(1);
+  }
+  26% {
+    opacity: 0;
+    transform: scale(.82);
+  }
+}
+
+@keyframes card-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgb(201 246 111 / 0%);
+  }
+  50% {
+    box-shadow: 0 0 18px rgb(201 246 111 / 2%);
+  }
+}

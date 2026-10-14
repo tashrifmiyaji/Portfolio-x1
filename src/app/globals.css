@@ -49,6 +49,7 @@ body {
   filter: blur(100px);
   opacity: .12;
   pointer-events: none;
+  animation: ambient-drift 22s ease-in-out infinite alternate;
 }
 
 .ambient-one {
@@ -61,6 +62,7 @@ body {
   top: 66rem;
   left: -20rem;
   background: #6450c7;
+  animation-delay: -11s;
 }
 
 .site-header {
@@ -70,6 +72,12 @@ body {
   border-bottom: 1px solid rgb(255 255 255 / 6%);
   background: rgb(11 13 12 / 78%);
   backdrop-filter: blur(18px);
+}
+
+.site-main,
+footer {
+  position: relative;
+  z-index: 1;
 }
 
 .brand-mark {
@@ -168,6 +176,35 @@ body {
   align-items: center;
   gap: 3.5rem;
   padding: 2rem 0 6rem;
+}
+
+.hero-section::before {
+  position: absolute;
+  inset: -2rem -4rem 2rem;
+  background-image:
+    linear-gradient(rgb(201 246 111 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(201 246 111 / 4%) 1px, transparent 1px);
+  background-size: 62px 62px;
+  content: "";
+  mask-image: linear-gradient(180deg, #000 0%, rgb(0 0 0 / 55%) 58%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-section::after {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: -8%;
+  width: 22rem;
+  height: 22rem;
+  border: 1px solid rgb(201 246 111 / 7%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2.5rem rgb(201 246 111 / 2%),
+    0 0 0 5rem rgb(201 246 111 / 1%);
+  content: "";
+  pointer-events: none;
+  animation: orbit-breathe 12s ease-in-out infinite alternate;
 }
 
 .hero-copy {
@@ -425,6 +462,7 @@ body {
   background: rgb(19 23 20 / 88%);
   box-shadow: 0 20px 50px rgb(0 0 0 / 30%);
   backdrop-filter: blur(16px);
+  animation: float-soft 8s ease-in-out infinite alternate;
 }
 
 .floating-code {
@@ -481,6 +519,7 @@ body {
   color: #adb5ad;
   font-size: .65rem;
   transform: rotate(-3deg);
+  animation-delay: -4s;
 }
 
 .floating-location i {
@@ -606,41 +645,6 @@ body {
   color: var(--lime);
 }
 
-#skills .max-w-xl {
-  padding-left: 0;
-  color: var(--muted);
-}
-
-#skills article {
-  position: relative;
-  overflow: hidden;
-  border-color: var(--line);
-  border-radius: 1rem;
-  background: linear-gradient(145deg, rgb(255 255 255 / 4%), rgb(255 255 255 / 1%));
-  transition: transform .25s ease, border-color .25s ease;
-}
-
-#skills article:hover {
-  transform: translateY(-5px);
-  border-color: rgb(201 246 111 / 35%);
-}
-
-#skills article h3 {
-  color: #e6ebe4;
-}
-
-#skills article h3 i {
-  color: var(--lime);
-}
-
-#skills [role="progressbar"] {
-  background: #252c25;
-}
-
-#skills [role="progressbar"] > div {
-  background: linear-gradient(90deg, #8cb744, var(--lime));
-}
-
 #education h2 {
   border-color: var(--lime);
 }
@@ -648,67 +652,6 @@ body {
 #education .text-emerald-400,
 #education .text-blue-400 {
   color: var(--lime);
-}
-
-#projects > div:first-child > h2 {
-  margin: 0 0 .55rem;
-  font-size: clamp(2.2rem, 5vw, 3.7rem);
-  letter-spacing: -.07em;
-}
-
-#projects > div:first-child > p {
-  color: var(--muted);
-}
-
-.glow-effect {
-  position: relative;
-  border-color: var(--line);
-  border-radius: 1rem;
-  background: #111512;
-}
-
-.glow-effect:hover {
-  transform: translateY(-7px);
-  border-color: rgb(201 246 111 / 45%);
-  box-shadow: 0 22px 60px rgb(0 0 0 / 35%);
-}
-
-.glow-effect > div:first-child > div:first-child {
-  position: relative;
-  height: 13rem;
-  overflow: hidden;
-  border-color: var(--line);
-}
-
-.glow-effect > div:first-child > div:first-child::before {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(135deg, rgb(201 246 111 / 8%), transparent 60%);
-  content: "";
-}
-
-.glow-effect > div:first-child > div:first-child i {
-  z-index: 1;
-  transition: transform .35s ease;
-}
-
-.glow-effect:hover > div:first-child > div:first-child i {
-  transform: scale(1.2) rotate(-7deg);
-}
-
-.glow-effect h3 {
-  letter-spacing: -.035em;
-}
-
-.glow-effect button {
-  border: 1px solid var(--line);
-  background: transparent;
-}
-
-.glow-effect button:hover {
-  border-color: var(--lime);
-  background: var(--lime);
-  color: #10130d;
 }
 
 #connect {
@@ -751,10 +694,6 @@ footer {
   color: #798179;
 }
 
-.glow-effect:hover {
-  box-shadow: 0 22px 60px rgb(0 0 0 / 35%);
-}
-
 .project-modal-backdrop {
   background: rgb(0 0 0 / 78%);
 }
@@ -764,6 +703,23 @@ footer {
   background:
     radial-gradient(ellipse at 95% 0%, rgb(201 246 111 / 8%), transparent 38%),
     #121614;
+}
+
+.project-modal-title {
+  padding-right: 2.25rem;
+}
+
+.project-modal-image {
+  position: relative;
+  height: clamp(10rem, 32vw, 18rem);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: .85rem;
+  background: #151b15;
+}
+
+.project-modal-image img {
+  object-fit: cover;
 }
 
 .project-modal h2,
@@ -843,6 +799,17 @@ footer {
 }
 
 @media (max-width: 767px) {
+  .hero-section::after {
+    right: -18%;
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .hero-section::before {
+    inset: -1rem -1rem 2rem;
+    background-size: 48px 48px;
+  }
+
   .hero-section {
     gap: 1rem;
     min-height: auto;
@@ -881,5 +848,37 @@ footer {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+
+}
+
+@keyframes ambient-drift {
+  from {
+    opacity: .08;
+    transform: translate3d(0, -1rem, 0) scale(.95);
+  }
+  to {
+    opacity: .16;
+    transform: translate3d(-1rem, 1.5rem, 0) scale(1.08);
+  }
+}
+
+@keyframes orbit-breathe {
+  from {
+    opacity: .45;
+    transform: scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes float-soft {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -5px;
   }
 }

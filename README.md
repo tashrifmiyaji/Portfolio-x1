@@ -7,7 +7,11 @@ A responsive developer portfolio built with Next.js App Router, React, TypeScrip
 ```text
 src/
   app/
-    globals.css                 # Global styles and responsive visual design
+    globals.css                 # Shared global styles and responsive layout
+    skills.css                  # Skill card layout and animations
+    projects.css                # Project card layout and animations
+    cursor-effects.css          # Cursor glow and ambient light
+    motion.css                  # Reusable scroll reveals and site-wide motion
     layout.tsx                  # Root layout and page metadata
     page.tsx                    # Home page composition
   components/
@@ -15,19 +19,20 @@ src/
       about-section.tsx         # About section
       contact-section.tsx       # Contact information
       hero-section.tsx          # Intro, profile image, and primary links
+      cursor-glow.tsx           # Subtle pointer-following ambient light
       journey-section.tsx       # Education and experience
       project-modal.tsx         # Project details dialog
       projects-section.tsx      # Project cards and dialog state
       section-heading.tsx       # Shared section heading
       site-footer.tsx           # Footer
       site-header.tsx           # Desktop and mobile navigation
-      skills-section.tsx        # Skills and progress indicators
+      skills-section.tsx        # Categorized skill cards with icons
       social-strip.tsx          # Expertise summary strip
   data/
     portfolio.ts                # Navigation, social links, skills, and projects
 ```
 
-Edit the matching section component for layout or text changes. Update `src/data/portfolio.ts` to change project, skill, navigation, or social-link data. Shared colors, typography, responsive behavior, and animations are in `src/app/globals.css`.
+Edit the matching section component for layout or text changes. Update `src/data/portfolio.ts` to change project, skill, navigation, or social-link data. Project preview images live in `public/`; project records include their image paths and repository links. Shared colors, typography, responsive behavior, and animations are in `src/app/globals.css`.
 
 ## Run locally
 
